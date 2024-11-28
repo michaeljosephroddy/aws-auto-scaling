@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://3.250.55.153:3306/servicedb
+    username: demouser
+    password: demouserpassword
+server:
+  port: 9091
