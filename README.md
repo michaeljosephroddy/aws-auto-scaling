@@ -1,26 +1,42 @@
-# auto-scaling-and-load-balancing
+# Auto-Scaling and Load Balancing
 
-This project is to demonstrate auto scaling and load balancing in EC2 using a Java microservice.
+This project demonstrates auto-scaling and load balancing in Amazon EC2 using a Java microservice.
 
-### How it Works
+---
 
-Requests come into the application load balancer and are routed or distributed to healthy instances in the target group. The auto scaling group is a separate entity and it manages the starting up and terminating of instances. Each instance will send some numerical metrics to cloud watch. In the auto scaling group we set a target tracking policy that monitors the average CPU utilization. If the avg. CPU untilization goes above this target, the auto scaling group will start another instance and if it goes below, it will terminate an instance.
+## How It Works
 
-### AWS Setup
+1. **Request Handling:**
+   - Incoming requests are routed through an Application Load Balancer (ALB).
+   - The ALB distributes requests to healthy instances within the target group.
 
-Please see the `auto-scaling-and-load-balancing/report.pdf` for more detailed instrcutions on AWS setup.
+2. **Auto-Scaling:**
+   - An Auto Scaling Group (ASG) manages the lifecycle of EC2 instances, starting or terminating them as needed.
+   - Each instance sends numerical metrics (e.g., CPU utilization) to Amazon CloudWatch.
+   - A target tracking policy in the ASG monitors the average CPU utilization:
+     - If the average CPU utilization exceeds the target threshold, the ASG launches additional instances.
+     - If the utilization falls below the threshold, the ASG terminates excess instances.
 
-### MySQL
+---
 
-Use the `couponservice/sql/tables.sql` file to setup the DB.
-You will need to change the database url, user and password in the `applications.yml` file.
+## AWS Setup
 
-### couponservice
+For detailed instructions on setting up AWS resources, refer to the `auto-scaling-and-load-balancing/report.pdf` file.
 
-The couponservice is a Spring Boot microserivce example for creating and reading coupons. It saves and reads data to/from a MySQL database.
+---
 
-A coupon looks like this:
+## MySQL Configuration
 
+1. Use the `couponservice/sql/tables.sql` file to set up the database schema.
+2. Update the database URL, username, and password in the `application.yml` file to match your MySQL configuration.
+
+---
+
+## Coupon Service
+
+`couponservice` is a Spring Boot microservice for creating and retrieving coupon data. It interacts with a MySQL database to persist and query coupons.
+
+A sample coupon JSON object:
 ```json
 {
   "id": 12345,
@@ -30,12 +46,17 @@ A coupon looks like this:
 }
 ```
 
-### Generating Load
+---
 
-Use the `auto-scaling-and-load-baalancing/send_requests.py` script to generate load on the microservice. You will need to change the application load balancer DNS name.
+## Generating Load
 
-### Architecture
+Use the `auto-scaling-and-load-balancing/send_requests.py` script to simulate load on the microservice. Update the script with your Application Load Balancer’s DNS name before running it.
 
-Here is a basic architecture diagram used to describe the different entities and interactions in this setup for auto scaling and load balancing.
+---
 
-![auto-scaling-and-load-balancing](./assignment1.jpg)
+## Architecture
+
+Below is an architecture diagram illustrating the entities and interactions involved in the auto-scaling and load-balancing setup:
+
+![Auto-Scaling and Load Balancing Architecture](./assignment1.jpg)
+
