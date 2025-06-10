@@ -1,6 +1,6 @@
-# Auto-Scaling and Load Balancing
+# Auto-Scaling and Load Balancing Assignment
 
-This project demonstrates auto-scaling and load balancing in Amazon EC2 using a Java microservice.
+This assignment for Container Design and Deployment module demonstrates auto-scaling and load balancing in Amazon EC2 using a Java microservice.
 
 ---
 
