@@ -2,8 +2,6 @@
 
 This assignment for Container Design and Deployment module demonstrates auto-scaling and load balancing in Amazon EC2 using a Java microservice.
 
----
-
 ## How It Works
 
 1. **Request Handling:**
@@ -17,20 +15,14 @@ This assignment for Container Design and Deployment module demonstrates auto-sca
      - If the average CPU utilization exceeds the target threshold, the ASG launches additional instances.
      - If the utilization falls below the threshold, the ASG terminates excess instances.
 
----
-
 ## AWS Setup
 
 For detailed instructions on setting up AWS resources, refer to the `auto-scaling-and-load-balancing/report.pdf` file.
-
----
 
 ## MySQL Configuration
 
 1. Use the `couponservice/sql/tables.sql` file to set up the database schema.
 2. Update the database URL, username, and password in the `application.yml` file to match your MySQL configuration.
-
----
 
 ## Coupon Service
 
@@ -46,13 +38,9 @@ A sample coupon JSON object:
 }
 ```
 
----
-
 ## Generating Load
 
 Use the `auto-scaling-and-load-balancing/send_requests.py` script to simulate load on the microservice. Update the script with your Application Load Balancer’s DNS name before running it.
-
----
 
 ## Architecture
 
